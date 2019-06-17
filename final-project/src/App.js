@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
-import "./components/SignIn";
-import SignInSide from "./components/SignIn";
+
+import FormLanding from "./components/FormLanding";
+
 function App() {
-  return <SignInSide />;
+  return <FormLanding />;
 }
 
 export default App;
