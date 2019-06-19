@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Register from "../Register";
 import SignIn from "../SignIn";
+import Nav from "../Nav";
 
 class FormLanding extends React.Component {
   state = {
@@ -40,10 +41,14 @@ class FormLanding extends React.Component {
 
   render() {
     return (
-      <Router>
-        <SignIn />
-        <Route exact path="/welcome/register" component={Register} />
-      </Router>
+      <div>
+        <Nav />
+
+        <Router>
+          <Route path="/" Component={SignIn} />
+          <Route path="/signin" Component={SignIn} />
+        </Router>
+      </div>
     );
   }
 }
