@@ -1,5 +1,8 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Register from "../Register";
+import SignIn from "../SignIn";
 
 class FormLanding extends React.Component {
   state = {
@@ -24,8 +27,24 @@ class FormLanding extends React.Component {
     );
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    const newUser = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
+    };
+    console.log("New user:", newUser);
+  };
+
   render() {
-    return <Register handleChange={this.handleChange} />;
+    return (
+      <Router>
+        <SignIn />
+        <Route exact path="/welcome/register" component={Register} />
+      </Router>
+    );
   }
 }
 

@@ -57,7 +57,7 @@ function Register(props) {
           <Typography component="h1" variant="h5">
             Register
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={props.onSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -79,7 +79,6 @@ function Register(props) {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
               onChange={e => props.handleChange(e)}
             />
             <TextField
@@ -100,8 +99,8 @@ function Register(props) {
               required
               fullWidth
               name="password2"
-              label="Password2"
-              type="password2"
+              label="Confirm Password"
+              type="password"
               id="password2"
               autoComplete="current-password"
               onChange={e => props.handleChange(e)}
@@ -138,5 +137,106 @@ function Register(props) {
     </Grid>
   );
 }
+
+// class Register extends React.Component {
+
+//   render() {
+//     return (
+//       <Grid container component="main" className={this.classes.root}>
+//         <CssBaseline />
+//         <Grid item xs={false} sm={4} md={7} className={this.classes.image} />
+//         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+//           <div className={this.classes.paper}>
+//             <Avatar className={this.classes.avatar}>
+//               <LockOutlinedIcon />
+//             </Avatar>
+//             <Typography component="h1" variant="h5">
+//               Register
+//             </Typography>
+//             <form
+//               className={this.classes.form}
+//               noValidate
+//               //   onSubmit={props.onSubmit}
+//             >
+//               <TextField
+//                 variant="outlined"
+//                 margin="normal"
+//                 required
+//                 fullWidth
+//                 id="name"
+//                 label="Name"
+//                 name="name"
+//                 autoComplete="name"
+//                 autoFocus
+//                 // onChange={e => props.handleChange(e)}
+//               />
+//               <TextField
+//                 variant="outlined"
+//                 margin="normal"
+//                 required
+//                 fullWidth
+//                 id="email"
+//                 label="Email Address"
+//                 name="email"
+//                 autoComplete="email"
+//                 // onChange={e => props.handleChange(e)}
+//               />
+//               <TextField
+//                 variant="outlined"
+//                 margin="normal"
+//                 required
+//                 fullWidth
+//                 name="password"
+//                 label="Password"
+//                 type="password"
+//                 id="password"
+//                 autoComplete="current-password"
+//                 // onChange={e => props.handleChange(e)}
+//               />
+//               <TextField
+//                 variant="outlined"
+//                 margin="normal"
+//                 required
+//                 fullWidth
+//                 name="password2"
+//                 label="Password2"
+//                 type="password"
+//                 id="password2"
+//                 autoComplete="current-password"
+//                 // onChange={e => props.handleChange(e)}
+//               />
+//               <FormControlLabel
+//                 control={<Checkbox value="remember" color="primary" />}
+//                 label="Remember me"
+//               />
+//               <Button
+//                 type="submit"
+//                 fullWidth
+//                 variant="contained"
+//                 color="primary"
+//                 className={this.classes.submit}
+//               >
+//                 Sign In
+//               </Button>
+//               <Grid container>
+//                 <Grid item xs>
+//                   <Link href="#" variant="body2">
+//                     Forgot password?
+//                   </Link>
+//                 </Grid>
+//                 <Grid item>
+//                   <Link href="#" variant="body2">
+//                     {"Don't have an account? Sign Up"}
+//                   </Link>
+//                 </Grid>
+//               </Grid>
+//               <Box mt={5} />
+//             </form>
+//           </div>
+//         </Grid>
+//       </Grid>
+//     );
+//   }
+// }
 
 export default Register;
