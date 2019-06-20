@@ -1,15 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-
-import Register from "../Register";
-import SignIn from "../SignIn";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,8 +19,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Nav() {
+function Nav(props) {
   const classes = useStyles();
+  const isLoggedIn = props.isLoggedIn;
+
+  if (isLoggedIn) {
+    console.log(isLoggedIn);
+
+    // return null;
+  }
 
   return (
     <div className={classes.root}>
@@ -44,10 +47,6 @@ function Nav() {
             </Typography>
           </Toolbar>
         </AppBar>
-
-        <Route exact path="/" component={SignIn} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/register" component={Register} />
       </Router>
     </div>
   );

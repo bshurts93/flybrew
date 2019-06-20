@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Deposits() {
+function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -29,3 +29,5 @@ export default function Deposits() {
     </React.Fragment>
   );
 }
+
+export default Deposits;

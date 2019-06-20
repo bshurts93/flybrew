@@ -1,44 +1,85 @@
-import React, { PureComponent } from "react";
+import React from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Label,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer
+} from "recharts";
 import Title from "./Title";
-import { PieChart, Pie, Sector, Cell } from "recharts";
+
+// Generate Sales Data
+function createData(beers, amount) {
+  return { beers, amount };
+}
+
+// const data = [
+//   createData("Sunday", 3),
+//   createData("Monday", 4),
+//   createData("Tuesday", 2),
+//   createData("Wednesday", 4),
+//   createData("Thursday", 2),
+//   createData("Friday", 3),
+//   createData("Saturday", 4),
+//   createData("Sunday", 2)
+// ];
 
 const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 }
-];
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  {
+    name: "Sunday",
+    Brews: 2,
+    amt: 2400
+  },
+  {
+    name: "Monday",
+    Brews: 3,
+    amt: 2210
+  },
+  {
+    name: "Tuedsday",
 
-export default class Example extends PureComponent {
-  static jsfiddleUrl = "https://jsfiddle.net/alidingling/3Leoa7f4/";
-
-  render() {
-    return (
-      <div>
-        <Title>Stats</Title>
-        <PieChart width={800} height={200} onMouseEnter={this.onPieEnter}>
-          <Pie
-            data={data}
-            cx={420}
-            cy={200}
-            startAngle={180}
-            endAngle={0}
-            innerRadius={60}
-            outerRadius={80}
-            fill="#8884d8"
-            paddingAngle={5}
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </PieChart>
-      </div>
-    );
+    Brews: 5,
+    amt: 2290
+  },
+  {
+    name: "Wednesday",
+    Brews: 3,
+    amt: 2000
+  },
+  {
+    name: "Thursday",
+    Brews: 4,
+    amt: 2181
+  },
+  {
+    name: "Friday",
+    Brews: 1,
+    amt: 2500
+  },
+  {
+    name: "Saturday",
+    Brews: 5,
+    amt: 2100
   }
+];
+
+export default function Chart() {
+  return (
+    <React.Fragment>
+      <Title>Your Week</Title>
+      <ResponsiveContainer>
+        <BarChart width={730} height={250} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="Brews" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </React.Fragment>
+  );
 }

@@ -144,7 +144,7 @@ export default function Dashboard() {
             Final Project - Dashboard
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
+            <Badge badgeContent={1} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>

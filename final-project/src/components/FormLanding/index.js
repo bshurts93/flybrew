@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Register from "../Register";
+// import Register from "../Register";
 import SignIn from "../SignIn";
 import Nav from "../Nav";
 
@@ -10,7 +10,8 @@ class FormLanding extends React.Component {
     name: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    isLoggedIn: false
   };
 
   handleChange = e => {
@@ -42,7 +43,7 @@ class FormLanding extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav isLoggedIn={this.state.isLoggedIn} />
 
         <Router>
           <Route path="/" Component={SignIn} />
