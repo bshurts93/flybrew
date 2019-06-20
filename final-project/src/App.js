@@ -45,9 +45,21 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <Route exact path="/" component={SignIn} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/register" component={Register} />
+          <Route
+            exact
+            path="/"
+            render={routeProps => <SignIn handleChange={this.handleChange} />}
+          />
+          <Route
+            exact
+            path="/signin"
+            render={routeProps => <SignIn handleChange={this.handleChange} />}
+          />{" "}
+          <Route
+            exact
+            path="/register"
+            render={routeProps => <Register handleChange={this.handleChange} />}
+          />{" "}
           <Route exact path="/dash" component={Dash} />
         </Router>
       </div>
