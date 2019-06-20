@@ -42,8 +42,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
   const classes = useStyles();
+
+  console.log(props);
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -68,6 +70,7 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={e => props.handleChange(e)}
             />
             <TextField
               variant="outlined"
@@ -79,6 +82,7 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={e => props.handleChange(e)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

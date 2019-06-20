@@ -12,6 +12,7 @@ class App extends Component {
     email: "",
     password: "",
     password2: "",
+    errors: {},
     isLoggedIn: false
   };
 
@@ -20,14 +21,9 @@ class App extends Component {
     const value = target.value;
     const name = target.name;
 
-    this.setState(
-      {
-        [name]: value
-      },
-      () => {
-        console.log(this.state);
-      }
-    );
+    this.setState({
+      [name]: value
+    });
   };
 
   onSubmit = e => {
@@ -42,23 +38,43 @@ class App extends Component {
   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <Router>
           <Route
             exact
             path="/"
-            render={routeProps => <SignIn handleChange={this.handleChange} />}
+            render={routeProps => (
+              <SignIn
+                handleChange={this.handleChange}
+                onSubmit={this.onSubmit}
+                errors={errors}
+              />
+            )}
           />
           <Route
             exact
             path="/signin"
-            render={routeProps => <SignIn handleChange={this.handleChange} />}
+            render={routeProps => (
+              <SignIn
+                handleChange={this.handleChange}
+                onSubmit={this.onSubmit}
+                errors={errors}
+              />
+            )}
           />{" "}
           <Route
             exact
             path="/register"
-            render={routeProps => <Register handleChange={this.handleChange} />}
+            render={routeProps => (
+              <Register
+                handleChange={this.handleChange}
+                onSubmit={this.onSubmit}
+                errors={errors}
+              />
+            )}
           />{" "}
           <Route exact path="/dash" component={Dash} />
         </Router>

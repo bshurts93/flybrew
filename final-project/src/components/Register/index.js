@@ -69,6 +69,7 @@ function Register(props) {
               autoComplete="name"
               autoFocus
               onChange={e => props.handleChange(e)}
+              errors={props.errors.name}
             />
             <TextField
               variant="outlined"
@@ -80,6 +81,7 @@ function Register(props) {
               name="email"
               autoComplete="email"
               onChange={e => props.handleChange(e)}
+              errors={props.errors.email}
             />
             <TextField
               variant="outlined"
@@ -92,6 +94,7 @@ function Register(props) {
               id="password"
               autoComplete="current-password"
               onChange={e => props.handleChange(e)}
+              errors={props.errors.password}
             />
             <TextField
               variant="outlined"
@@ -104,6 +107,7 @@ function Register(props) {
               id="password2"
               autoComplete="current-password"
               onChange={e => props.handleChange(e)}
+              errors={props.errors.password2}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -116,7 +120,7 @@ function Register(props) {
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Create Account
             </Button>
             <Grid container>
               <Grid item xs>
