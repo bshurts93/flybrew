@@ -2,13 +2,18 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Dashwrap from "../layout/Dashwrap";
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) => (
   <Route
     {...rest}
     render={props =>
       auth.isAuthenticated === true ? (
-        <Component {...props} />
+        <div>
+          <Dashwrap>
+            <Component {...props} />
+          </Dashwrap>
+        </div>
       ) : (
         <Redirect to="/login" />
       )
