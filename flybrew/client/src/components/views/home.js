@@ -6,7 +6,11 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import List from "../layout/List";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import DraftsIcon from "@material-ui/icons/Drafts";
 
 // import BreweryDB from "../../utils/breweryDB";
 import PropTypes from "prop-types";
@@ -156,7 +160,16 @@ class Home extends React.Component {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <h2>Results</h2>
-                <List />
+                <List>
+                  {this.state.breweries.map((item, index) => (
+                    <ListItem button key={index}>
+                      <ListItemIcon>
+                        <DraftsIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={item} />
+                    </ListItem>
+                  ))}
+                </List>
               </Paper>
             </Grid>
           </Grid>
