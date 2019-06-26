@@ -13,8 +13,11 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
+
+// Views
 import Home from "./components/views/home";
 import Profile from "./components/views/profile";
+import Places from "./components/views/places";
 
 import "./App.css";
 
@@ -50,6 +53,7 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Home} />
               <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/places" component={Places} />
             </Switch>
           </div>
         </Router>

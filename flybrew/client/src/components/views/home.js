@@ -56,7 +56,7 @@ class Home extends React.Component {
       .then(json => {
         const resList = json.response.beers.items;
         const beers = [];
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 15; i++) {
           beers.push(resList[i]);
         }
         this.setState({
