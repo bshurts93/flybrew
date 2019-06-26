@@ -39,6 +39,12 @@ class Home extends React.Component {
     this.setState({ value: event.target.value });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+
+    this.getBeers(this.state.value);
+  };
+
   getBeers = query => {
     fetch(
       "https://api.untappd.com/v4/search/beer?client_id=4DC50801B2DC3BB0E37479505B45D14F799DE591&client_secret=E7F1777CE708789204E2B446A0C99FFC3A4DF5E6&q=" +
@@ -69,7 +75,7 @@ class Home extends React.Component {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <h2>Beer Search</h2>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                   <TextField
                     id="outlined-full-width"
                     label="Search"
@@ -82,10 +88,7 @@ class Home extends React.Component {
                     }}
                     onChange={this.handleChange}
                   />
-                  <Button
-                    variant="outlined"
-                    onClick={() => this.getBeers(this.state.value)}
-                  >
+                  <Button variant="outlined" onClick={this.handleSubmit}>
                     Search
                   </Button>
                 </form>
