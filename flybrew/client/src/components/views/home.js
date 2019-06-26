@@ -51,7 +51,7 @@ class Home extends React.Component {
         const resList = json.response.beers.items;
         const beers = [];
         for (var i = 0; i < 10; i++) {
-          beers.push(resList[i].beer.beer_name);
+          beers.push(resList[i]);
         }
         this.setState({
           beers: beers
@@ -101,7 +101,10 @@ class Home extends React.Component {
                         <ListItemIcon>
                           <DraftsIcon />
                         </ListItemIcon>
-                        <ListItemText primary={item} />
+                        <ListItemText
+                          primary={item.beer.beer_name}
+                          secondary={item.brewery.brewery_name}
+                        />
                       </ListItem>
                       <Divider />
                     </div>
