@@ -144,7 +144,7 @@ function Dashwrap(props) {
             noWrap
             className={classes.title}
           >
-            Dashwrap
+            Flybrew
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

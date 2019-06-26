@@ -12,80 +12,10 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DraftsIcon from "@material-ui/icons/Drafts";
 
-// import BreweryDB from "../../utils/breweryDB";
 import PropTypes from "prop-types";
 
 import "./styles.css";
-
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     flexGrow: 1
-//   },
-//   paper: {
-//     padding: theme.spacing(2),
-//     textAlign: "center",
-//     color: theme.palette.text.secondary
-//   }
-// }));
-
-// function Home() {
-//   const classes = useStyles();
-
-//   const breweries = [];
-
-//   const getBeers = () => {
-//     fetch(
-//       "https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=ab91f8c08c9f4df4411ec21a266438c4&countryIsoCode=de"
-//     )
-//       .then(res => {
-//         return res.json();
-//       })
-//       .then(json => {
-//         console.log(json);
-//         for (var i = 0; i < 10; i++) {
-//           breweries.push(json.data[i].brewery.name);
-//         }
-//         console.log(breweries);
-//       });
-//   };
-
-//   return (
-//     <div className={classes.root}>
-//       <Container>
-//         <Grid container spacing={3}>
-//           <Grid item xs={12}>
-//             <Paper className={classes.paper}>
-//               <h2>Beer Search</h2>
-//               <form>
-//                 <TextField
-//                   id="outlined-full-width"
-//                   label="Search"
-//                   style={{ margin: 8 }}
-//                   fullWidth
-//                   margin="normal"
-//                   variant="outlined"
-//                   InputLabelProps={{
-//                     shrink: true
-//                   }}
-//                 />
-//                 <Button variant="outlined" onClick={() => getBeers()}>
-//                   Search
-//                 </Button>
-//               </form>
-//             </Paper>
-//           </Grid>
-//           <Grid item xs={12}>
-//             <Paper className={classes.paper}>
-//               <h2>Results</h2>
-//             </Paper>
-//           </Grid>
-//         </Grid>
-//       </Container>
-//     </div>
-//   );
-// }
-
-// export default Home;
+import { Divider } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
@@ -101,33 +31,33 @@ const styles = theme => ({
 
 class Home extends React.Component {
   state = {
-    breweries: []
+    value: "",
+    beers: []
   };
 
-  getBeers = () => {
+  handleChange = event => {
+    this.setState({ value: event.target.value });
+  };
+
+  getBeers = query => {
     fetch(
-      "https://cors-anywhere.herokuapp.com/http://api.brewerydb.com/v2/locations/?key=ab91f8c08c9f4df4411ec21a266438c4&countryIsoCode=de"
+      "https://api.untappd.com/v4/search/beer?client_id=4DC50801B2DC3BB0E37479505B45D14F799DE591&client_secret=E7F1777CE708789204E2B446A0C99FFC3A4DF5E6&q=" +
+        query
     )
       .then(res => {
         return res.json();
       })
       .then(json => {
-        const breweries = [];
+        const resList = json.response.beers.items;
+        const beers = [];
         for (var i = 0; i < 10; i++) {
-          breweries.push(json.data[i].brewery.name);
+          beers.push(resList[i].beer.beer_name);
         }
-        this.setState(
-          {
-            breweries: breweries
-          },
-          function() {
-            console.log(this.state);
-          }
-        );
+        this.setState({
+          beers: beers
+        });
       });
   };
-
-  breweryList = this.state.breweries.map(brewery => <li>{brewery}</li>);
 
   render() {
     const { classes } = this.props;
@@ -150,8 +80,12 @@ class Home extends React.Component {
                     InputLabelProps={{
                       shrink: true
                     }}
+                    onChange={this.handleChange}
                   />
-                  <Button variant="outlined" onClick={() => this.getBeers()}>
+                  <Button
+                    variant="outlined"
+                    onClick={() => this.getBeers(this.state.value)}
+                  >
                     Search
                   </Button>
                 </form>
@@ -161,13 +95,16 @@ class Home extends React.Component {
               <Paper className={classes.paper}>
                 <h2>Results</h2>
                 <List>
-                  {this.state.breweries.map((item, index) => (
-                    <ListItem button key={index}>
-                      <ListItemIcon>
-                        <DraftsIcon />
-                      </ListItemIcon>
-                      <ListItemText primary={item} />
-                    </ListItem>
+                  {this.state.beers.map((item, index) => (
+                    <div key={index}>
+                      <ListItem button>
+                        <ListItemIcon>
+                          <DraftsIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={item} />
+                      </ListItem>
+                      <Divider />
+                    </div>
                   ))}
                 </List>
               </Paper>
