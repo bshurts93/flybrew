@@ -10,34 +10,34 @@ import Card from "../layout/Card";
 const countries = [
   {
     name: "Germany",
-    body: "This is the body for Germany",
+    body: "Water, hops, barley and yeast. No more, no less.",
     image: "https://flaglane.com/download/german-flag/german-flag-medium.jpg"
   },
   {
     name: "Belgium",
-    body: "This is the body for Belgium",
+    body: "Rich Quads, Spicy Saisons and Tart Lambics.",
     image: "https://flaglane.com/download/belgian-flag/belgian-flag-medium.jpg"
   },
   {
     name: "Czech Republic",
-    body: "This is the body for Czech Republic",
+    body: "Not just Pilsners.",
     image: "https://flaglane.com/download/czech-flag/czech-flag-medium.jpg"
   },
   {
     name: "Austria",
-    body: "This is the body for Austria",
+    body: "Vienna to Salzburg, the Lager is king",
     image:
       "https://flaglane.com/download/austrian-flag/austrian-flag-medium.jpg"
   },
   {
     name: "Norway",
-    body: "This is the body for Norway",
+    body: "Where there's a farmhouse, there's a brewhouse.",
     image:
       "https://flaglane.com/download/norwegian-flag/norwegian-flag-medium.jpg"
   },
   {
     name: "Ireland",
-    body: "This is the body for Ireland",
+    body: "Reds to Stouts to Wee Heavies. Sláinte!",
     image: "https://flaglane.com/download/irish-flag/irish-flag-medium.jpg"
   }
 ];
