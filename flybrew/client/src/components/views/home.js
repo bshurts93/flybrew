@@ -93,23 +93,26 @@ class Home extends React.Component {
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <h2>Results</h2>
-                <List>
-                  {this.state.beers.map((item, index) => (
-                    <div key={index}>
-                      <ListItem button>
-                        <ListItemIcon>
-                          <DraftsIcon />
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={item.beer.beer_name}
-                          secondary={item.brewery.brewery_name}
-                        />
-                      </ListItem>
-                      <Divider />
-                    </div>
-                  ))}
-                </List>
+                {this.state.beers.length < 1 ? (
+                  <h2>Search Above!</h2>
+                ) : (
+                  <List>
+                    {this.state.beers.map((item, index) => (
+                      <div key={index}>
+                        <ListItem button>
+                          <ListItemIcon>
+                            <DraftsIcon />
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={item.beer.beer_name}
+                            secondary={item.brewery.brewery_name}
+                          />
+                        </ListItem>
+                        <Divider />
+                      </div>
+                    ))}
+                  </List>
+                )}
               </Paper>
             </Grid>
           </Grid>
