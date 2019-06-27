@@ -17,7 +17,7 @@ export const mainListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <Link to="/dashboard">
+      <Link to="/dashboard" style={{ textDecoration: "none", color: "black" }}>
         <ListItemText primary="Dashboard" />
       </Link>
     </ListItem>
@@ -25,7 +25,7 @@ export const mainListItems = (
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
-      <Link to="/profile">
+      <Link to="/profile" style={{ textDecoration: "none", color: "black" }}>
         <ListItemText primary="My Profile" />
       </Link>
     </ListItem>
@@ -45,7 +45,7 @@ export const mainListItems = (
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
-      <Link to="/places">
+      <Link to="/places" style={{ textDecoration: "none", color: "black" }}>
         <ListItemText primary="Places" />
       </Link>
     </ListItem>

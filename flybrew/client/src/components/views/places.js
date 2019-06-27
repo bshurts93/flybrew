@@ -67,7 +67,10 @@ function Places() {
           </Grid>
           {countries.map((item, index) => (
             <Grid item xs={4} key={index}>
-              <Link to={"/places/" + item.name}>
+              <Link
+                to={"/places/" + item.name}
+                style={{ textDecoration: "none" }}
+              >
                 <Card header={item.name} body={item.body} image={item.image} />
               </Link>
             </Grid>
