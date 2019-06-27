@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+// import Card from "../layout/Card";
+import Table from "../layout/Table";
 
-import Card from "../layout/Card";
+const currentPage = () => {
+  return decodeURIComponent(window.location.pathname.slice(8));
+};
 
 const countries = [
   {
@@ -44,38 +46,64 @@ const countries = [
   }
 ];
 
+const object = arr => {
+  arr.forEach(element => {
+    if (element.name === currentPage()) {
+      console.log("MATCH: ", element);
+    }
+  });
+};
+
+object(countries);
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
-    margin: theme.spacing(5)
+    margin: theme.spacing(4, 1, 0, 1)
   }
 }));
 
-function Places() {
+function Country() {
   const classes = useStyles();
+  object(countries);
+  console.log(currentPage());
 
   return (
     <div>
       <Container>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
+          <Grid item xs={8}>
             <Paper className={classes.root}>
               <Typography variant="h4" component="h3">
-                Let's find your next destination
+                Overview -
+              </Typography>
+              <Typography variant="body1" component="p">
+                Willkommen aus Deutchland! The land of beer, brats and bretzels.
+                When it comes to beer around the world, Germany is known for
+                some of the purest, finest brews ever made. A traditional
+                brewing culture holds the brewing process to a high standard,
+                and the results speak for themselves.
+              </Typography>
+            </Paper>
+            <Paper className={classes.root}>
+              <Typography variant="h4" component="h3" onClick={() => object()}>
+                Phrasebook
+              </Typography>
+              <Table />
+            </Paper>
+          </Grid>
+
+          <Grid item xs={4}>
+            <Paper className={classes.root}>
+              <Typography variant="h4" component="h3">
+                Brews
               </Typography>
             </Paper>
           </Grid>
-          {countries.map((item, index) => (
-            <Grid item xs={4} key={index}>
-              <Link to={"/places/" + item.name}>
-                <Card header={item.name} body={item.body} image={item.image} />
-              </Link>
-            </Grid>
-          ))}
         </Grid>
       </Container>
     </div>
   );
 }
 
-export default Places;
+export default Country;

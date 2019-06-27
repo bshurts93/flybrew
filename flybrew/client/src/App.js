@@ -18,6 +18,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Home from "./components/views/home";
 import Profile from "./components/views/profile";
 import Places from "./components/views/places";
+import Country from "./components/views/country";
 
 import "./App.css";
 
@@ -54,6 +55,7 @@ class App extends Component {
               <PrivateRoute exact path="/dashboard" component={Home} />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/places" component={Places} />
+              <PrivateRoute exact path="/places/:country" component={Country} />
             </Switch>
           </div>
         </Router>
