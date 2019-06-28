@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
 
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
@@ -10,12 +11,12 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import { Divider } from "@material-ui/core";
 import DraftsIcon from "@material-ui/icons/Drafts";
 
-import PropTypes from "prop-types";
-
 import "./styles.css";
-import { Divider } from "@material-ui/core";
+import "../../utils/untappedAPI";
+import untappedAPI from "../../utils/untappedAPI";
 
 const styles = theme => ({
   root: {
@@ -46,10 +47,7 @@ class Home extends React.Component {
   };
 
   getBeers = query => {
-    fetch(
-      "https://api.untappd.com/v4/search/beer?client_id=4DC50801B2DC3BB0E37479505B45D14F799DE591&client_secret=E7F1777CE708789204E2B446A0C99FFC3A4DF5E6&q=" +
-        query
-    )
+    fetch(untappedAPI.searchBeersURL + query)
       .then(res => {
         return res.json();
       })
