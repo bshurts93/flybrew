@@ -11,10 +11,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { Divider } from "@material-ui/core";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import Table from "../layout/Table";
+import SimpleMap from "../../utils/googleMapsAPI";
 
 import countryData from "../../utils/countryData";
 import "../../utils/untappedAPI";
-import untappedAPI from "../../utils/untappedAPI";
+// import untappedAPI from "../../utils/untappedAPI";
 
 const currentPage = () => {
   return decodeURIComponent(window.location.pathname.slice(8));
@@ -30,21 +31,21 @@ const countryObject = arr => {
   return match;
 };
 
-const countryBeers = () => {
-  const beers = [];
-  fetch(untappedAPI.searchBeersURL + "german")
-    .then(res => {
-      return res.json();
-    })
-    .then(json => {
-      const resList = json.response.beers.items;
+// const countryBeers = () => {
+//   const beers = [];
+//   fetch(untappedAPI.searchBeersURL + "german")
+//     .then(res => {
+//       return res.json();
+//     })
+//     .then(json => {
+//       const resList = json.response.beers.items;
 
-      for (var i = 0; i < 15; i++) {
-        beers.push(resList[i]);
-      }
-      console.log(beers);
-    });
-};
+//       for (var i = 0; i < 15; i++) {
+//         beers.push(resList[i]);
+//       }
+//       console.log(beers);
+//     });
+// };
 
 const sample = [
   {
@@ -626,19 +627,21 @@ const sample = [
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
-    margin: theme.spacing(4, 1, 0, 1)
+    margin: theme.spacing(4, 1, 0, 1),
+    "& h3": {
+      paddingBottom: "1rem"
+    }
   }
 }));
 
 function Country() {
   const classes = useStyles();
   const country = countryObject(countryData);
-  countryBeers();
 
   return (
     <div>
       <Container>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} style={{ height: "100vh" }}>
           <Grid item xs={8}>
             <Paper className={classes.root}>
               <Typography variant="h4" component="h3">
@@ -649,7 +652,7 @@ function Country() {
               </Typography>
             </Paper>
             <Paper className={classes.root}>
-              <Typography variant="h4" component="h3">
+              <Typography variant="h4" component="h1">
                 Phrasebook
               </Typography>
               <Table
@@ -662,7 +665,7 @@ function Country() {
           <Grid item xs={4}>
             <Paper
               className={classes.root}
-              style={{ maxHeight: "58%", overflow: "auto" }}
+              style={{ height: "80vh", overflow: "auto" }}
             >
               <Typography variant="h4" component="h3">
                 Brews
@@ -683,6 +686,34 @@ function Country() {
                   </div>
                 ))}
               </List>
+            </Paper>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.root}>
+              <Typography variant="h4" component="h3">
+                Brews and Breweries - {country.name}
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid item xs={6}>
+                  <Typography
+                    variant="h4"
+                    style={{ fontWeight: "bold", letterSpacing: "2px" }}
+                  >
+                    Oktoberfest
+                  </Typography>
+                  <Typography variant="h5" style={{ fontStyle: "italic" }}>
+                    Spaten-Franziskaner-Bräu{" "}
+                  </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Paper>
+                    <SimpleMap />
+                  </Paper>
+                </Grid>
+              </Grid>
             </Paper>
           </Grid>
         </Grid>
