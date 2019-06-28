@@ -18,30 +18,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function createData(english, otherLanguage) {
-  return { english, otherLanguage };
-}
-
-const rows = [
-  createData(
-    "I will have a pilsner, please.",
-    "Ich werde bitte einen Pilsener haben."
-  ),
-  createData("Do you have a lager?", "Hast du ein Lager?"),
-  createData(
-    "May I have your favorite doppelbock?",
-    "Darf ich Ihren Lieblings-Doppelbock haben?"
-  ),
-  createData("I want something lighter.", "Ich möchte etwas leichter."),
-  createData(
-    "I loved the lager! What else is similar?",
-    "Ich habe das Lager geliebt! Was ist sonst noch ähnlich?"
-  ),
-  createData("Thank You!", "Vielen Dank!")
-];
-
-function SimpleTable() {
+function SimpleTable(props) {
   const classes = useStyles();
+  const phrasebook = props.phrasebook;
 
   return (
     <Paper className={classes.root}>
@@ -49,16 +28,16 @@ function SimpleTable() {
         <TableHead>
           <TableRow>
             <TableCell>English</TableCell>
-            <TableCell>German</TableCell>
+            <TableCell>{props.language}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => (
+          {phrasebook.map((row, index) => (
             <TableRow key={index}>
               <TableCell component="th" scope="row">
                 {row.english}
               </TableCell>
-              <TableCell>{row.otherLanguage}</TableCell>
+              <TableCell>{row.translated}</TableCell>
             </TableRow>
           ))}
         </TableBody>
