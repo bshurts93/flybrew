@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,7 +16,6 @@ import SimpleMap from "../../utils/googleMapsAPI";
 
 import countryData from "../../utils/countryData";
 import "../../utils/untappedAPI";
-// import untappedAPI from "../../utils/untappedAPI";
 
 const currentPage = () => {
   return decodeURIComponent(window.location.pathname.slice(8));
@@ -31,21 +31,12 @@ const countryObject = arr => {
   return match;
 };
 
-// const countryBeers = () => {
-//   const beers = [];
-//   fetch(untappedAPI.searchBeersURL + "german")
-//     .then(res => {
-//       return res.json();
-//     })
-//     .then(json => {
-//       const resList = json.response.beers.items;
-
-//       for (var i = 0; i < 15; i++) {
-//         beers.push(resList[i]);
-//       }
-//       console.log(beers);
-//     });
-// };
+const countryBeers = () => {
+  axios.get("/api/untappd").then(res => {
+    console.log("ROUTE HIT!");
+    console.log(res.data.items);
+  });
+};
 
 const sample = [
   {
@@ -637,6 +628,7 @@ const useStyles = makeStyles(theme => ({
 function Country() {
   const classes = useStyles();
   const country = countryObject(countryData);
+  countryBeers();
 
   return (
     <div>

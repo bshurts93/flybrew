@@ -1,7 +1,9 @@
 const express = require("express");
+const axios = require("axios");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+require("dotenv").config();
 
 const users = require("./routes/api/users");
 
@@ -32,6 +34,23 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+
+app.get("/api/untappd", (req, res) => {
+  axios
+    .get(
+      "https://api.untappd.com/v4/search/beer?client_id=" +
+        process.env.UNTAPPD_CLIENT_ID +
+        "&client_secret=" +
+        process.env.UNTAPPD_CLIENT_SECRET +
+        "&q=" +
+        "german"
+    )
+    .then(response => {
+      const data = response.data.response.beers;
+      console.log(data);
+      res.send(data);
+    });
+});
 
 const port = process.env.PORT || 5000;
 
