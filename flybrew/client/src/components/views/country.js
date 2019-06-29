@@ -620,6 +620,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
     margin: theme.spacing(4, 1, 0, 1),
+    "& h4": {
+      paddingBottom: ".3rem"
+    },
     "& h3, h5": {
       paddingBottom: "1rem"
     },
@@ -712,7 +715,10 @@ function Country() {
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <SimpleMap />
+                      <SimpleMap
+                        label={item.brewery}
+                        coordinates={item.coordinates}
+                      />
                     </Grid>
                   </Grid>
                 </Paper>

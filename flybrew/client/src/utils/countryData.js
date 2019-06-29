@@ -41,13 +41,21 @@ const countryData = [
         name: "Oktoberfest",
         brewery: "Spaten-Franziskaner-Bräu",
         description:
-          "This medium bodied beer has achieved its impeccable taste by balancing the roasted malt flavor with the perfect amount of hops. Having a rich textured palate with an underlying sweetness true to tradition."
+          "This medium bodied beer has achieved its impeccable taste by balancing the roasted malt flavor with the perfect amount of hops. Having a rich textured palate with an underlying sweetness true to tradition.",
+        coordinates: {
+          lat: 48.145018,
+          lng: 11.554067
+        }
       },
       {
         name: "Salvator Doppelbock",
         brewery: "Paulaner",
         description:
-          "This unfiltered bottom fermented double bock beer has been brewed for over 375 years—always adhering to the original recipe. The taste is unmistakable, with its smooth chocolate flavor, caramel maltiness and a light note of hops—providing a nice intensity on the palate."
+          "This unfiltered bottom fermented double bock beer has been brewed for over 375 years—always adhering to the original recipe. The taste is unmistakable, with its smooth chocolate flavor, caramel maltiness and a light note of hops—providing a nice intensity on the palate.",
+        coordinates: {
+          lat: 48.123367,
+          lng: 11.581666
+        }
       }
     ]
   },
@@ -86,6 +94,28 @@ const countryData = [
       {
         english: "Cheers!",
         translated: "Proost!"
+      }
+    ],
+    brewsAndBreweries: [
+      {
+        name: "Oktoberfest",
+        brewery: "Brouwerij Van Steenberge",
+        description:
+          "This characterful, fiery beer was originally commissioned by the Cruyl brewery in Assenede. At the time, it was a festive beer brewed just once a year for the Assenede fanfare.",
+        coordinates: {
+          lat: 51.176459,
+          lng: 3.76459
+        }
+      },
+      {
+        name: "Leffe Royale Blonde",
+        brewery: "Abbaye de Leffe",
+        description:
+          "Leffe Royale is a top-fermentation beer made from 3 different hop varieties. It provides the perfect balance between bitter and sweet. Hints of lemon and grapefruit complete this sense of harmony and in its own, special chalice, Leffe Royal’s flavour and aroma will carry you away.",
+        coordinates: {
+          lat: 50.268892,
+          lng: 4.907636
+        }
       }
     ]
   },
