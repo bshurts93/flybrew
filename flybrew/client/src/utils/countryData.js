@@ -35,6 +35,20 @@ const countryData = [
         english: "Cheers!",
         translated: "Prost!"
       }
+    ],
+    brewsAndBreweries: [
+      {
+        name: "Oktoberfest",
+        brewery: "Spaten-Franziskaner-Bräu",
+        description:
+          "This medium bodied beer has achieved its impeccable taste by balancing the roasted malt flavor with the perfect amount of hops. Having a rich textured palate with an underlying sweetness true to tradition."
+      },
+      {
+        name: "Salvator Doppelbock",
+        brewery: "Paulaner",
+        description:
+          "This unfiltered bottom fermented double bock beer has been brewed for over 375 years—always adhering to the original recipe. The taste is unmistakable, with its smooth chocolate flavor, caramel maltiness and a light note of hops—providing a nice intensity on the palate."
+      }
     ]
   },
   {

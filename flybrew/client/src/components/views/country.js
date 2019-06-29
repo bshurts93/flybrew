@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -31,12 +31,13 @@ const countryObject = arr => {
   return match;
 };
 
-const countryBeers = () => {
-  axios.get("/api/untappd").then(res => {
-    console.log("ROUTE HIT!");
-    console.log(res.data.items);
-  });
-};
+// const countryBeers = () => {
+//   axios.get("/api/untappd").then(res => {
+//     const data = res.data.items;
+
+//     console.log(data);
+//   });
+// };
 
 const sample = [
   {
@@ -619,8 +620,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
     margin: theme.spacing(4, 1, 0, 1),
-    "& h3": {
+    "& h3, h5": {
       paddingBottom: "1rem"
+    },
+    "& p": {
+      marginTop: "1rem"
     }
   }
 }));
@@ -628,7 +632,7 @@ const useStyles = makeStyles(theme => ({
 function Country() {
   const classes = useStyles();
   const country = countryObject(countryData);
-  countryBeers();
+  // countryBeers();
 
   return (
     <div>
@@ -688,24 +692,31 @@ function Country() {
               <Typography variant="h4" component="h3">
                 Brews and Breweries - {country.name}
               </Typography>
-              <Grid container spacing={3}>
-                <Grid item xs={6}>
-                  <Typography
-                    variant="h4"
-                    style={{ fontWeight: "bold", letterSpacing: "2px" }}
-                  >
-                    Oktoberfest
-                  </Typography>
-                  <Typography variant="h5" style={{ fontStyle: "italic" }}>
-                    Spaten-Franziskaner-Bräu{" "}
-                  </Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Paper>
-                    <SimpleMap />
-                  </Paper>
-                </Grid>
-              </Grid>
+
+              {country.brewsAndBreweries.map((item, index) => (
+                <Paper className={classes.root}>
+                  <Grid container spacing={3}>
+                    <Grid item xs={6}>
+                      <Typography
+                        variant="h4"
+                        style={{ fontWeight: "bold", letterSpacing: "2px" }}
+                      >
+                        {item.name}
+                      </Typography>
+                      <Typography variant="h5" style={{ fontStyle: "italic" }}>
+                        {item.brewery}
+                      </Typography>
+                      <Divider />
+                      <Typography variant="body1" component="p">
+                        {item.description}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <SimpleMap />
+                    </Grid>
+                  </Grid>
+                </Paper>
+              ))}
             </Paper>
           </Grid>
         </Grid>

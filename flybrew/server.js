@@ -47,7 +47,6 @@ app.get("/api/untappd", (req, res) => {
     )
     .then(response => {
       const data = response.data.response.beers;
-      console.log(data);
       res.send(data);
     });
 });
