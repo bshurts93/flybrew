@@ -98,7 +98,7 @@ const countryData = [
     ],
     brewsAndBreweries: [
       {
-        name: "Oktoberfest",
+        name: "Gulden Draak Classic",
         brewery: "Brouwerij Van Steenberge",
         description:
           "This characterful, fiery beer was originally commissioned by the Cruyl brewery in Assenede. At the time, it was a festive beer brewed just once a year for the Assenede fanfare.",
@@ -154,6 +154,28 @@ const countryData = [
       {
         english: "Cheers!",
         translated: "Na zdraví!"
+      }
+    ],
+    brewsAndBreweries: [
+      {
+        name: "Flekovský ležák 13°",
+        brewery: "Pivovar U Fleků",
+        description:
+          "What kind of brewery only serves one beer? This one - and for a good reason. Pivovar U Fleků has been a brewpub since 1499, and is the only place in the world to get a hold of this Czech favorite.",
+        coordinates: {
+          lat: 50.078842,
+          lng: 14.416957
+        }
+      },
+      {
+        name: "Černý ležák",
+        brewery: "Pivovar Bernard",
+        description:
+          "A dark lager with a fine yeast culture, this beer is unpasteurized and brewed from four types of malt, with a distinctive full taste and a fine bitterness. Just one of many varieties from a brewhouse that has been producing beer since 1597.",
+        coordinates: {
+          lat: 49.539957,
+          lng: 15.359785
+        }
       }
     ]
   },
