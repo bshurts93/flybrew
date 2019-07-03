@@ -12,7 +12,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Divider } from "@material-ui/core";
-import DraftsIcon from "@material-ui/icons/Drafts";
+import Typography from "@material-ui/core/Typography";
+import AddBox from "@material-ui/icons/AddBox";
 
 import "./styles.css";
 import "../../utils/untappedAPI";
@@ -25,8 +26,10 @@ const styles = theme => ({
   paper: {
     padding: "30px",
     marginTop: "30px",
-    textAlign: "center",
     color: "black"
+  },
+  center: {
+    textAlign: "center"
   }
 });
 
@@ -71,12 +74,19 @@ class Home extends React.Component {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <h2>Beer Search</h2>
+              <Paper className={`${classes.paper} search`}>
+                <Typography variant="h2">Where to?</Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Paper className={`${classes.paper} ${classes.center}`}>
                 <form onSubmit={this.handleSubmit}>
                   <TextField
                     id="outlined-full-width"
-                    label="Search"
+                    label="Search Beers via Untappd"
                     style={{ margin: 8 }}
                     fullWidth
                     margin="normal"
@@ -87,7 +97,7 @@ class Home extends React.Component {
                     onChange={this.handleChange}
                   />
                   <Button variant="outlined" onClick={this.handleSubmit}>
-                    Search
+                    <Typography variant="button">Search</Typography>
                   </Button>
                 </form>
               </Paper>
@@ -95,14 +105,16 @@ class Home extends React.Component {
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 {this.state.beers.length < 1 ? (
-                  <h2>Search Above!</h2>
+                  <Typography variant="h4" className={classes.center}>
+                    Search Above!
+                  </Typography>
                 ) : (
                   <List>
                     {this.state.beers.map((item, index) => (
                       <div key={index}>
                         <ListItem button>
                           <ListItemIcon>
-                            <DraftsIcon />
+                            <AddBox />
                           </ListItemIcon>
                           <ListItemText
                             primary={item.beer.beer_name}

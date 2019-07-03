@@ -10,7 +10,6 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import { Divider } from "@material-ui/core";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -88,6 +87,7 @@ function Profile(props) {
       <Container>
         <Grid container spacing={3} style={{ height: "100vh" }}>
           <Grid item xs={12}>
+            {/* User greeting */}
             <Paper className={classes.root}>
               <Typography variant="h4" component="h3">
                 Welcome, {user}
@@ -96,6 +96,8 @@ function Profile(props) {
                 This is the profile page. More to come!
               </Typography>
             </Paper>
+
+            {/* Check in Table */}
             <Paper className={classes.root}>
               <Typography variant="h4" component="h1">
                 Check Ins
