@@ -83,15 +83,18 @@ const dummyData = {
 function Profile(props) {
   const classes = useStyles();
   const user = props.auth.user.name.split(" ", 1);
+  const userID = props.auth.user.id;
+  console.log(userID);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("WORKS");
+    const testInput = document.getElementById("test").value;
+    const testInput2 = document.getElementById("test2").value;
 
     axios
       .post("/api/userdata/testing", {
-        checkIns: ["Wow!", "Wowowowow!"],
-        translations: ["Checkin1", "Checkin2"]
+        checkIns: [testInput],
+        translations: [testInput2]
       })
       .then(function(response) {
         console.log(response);
@@ -132,8 +135,8 @@ function Profile(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {dummyData.checkIns.map(checkin => (
-                    <TableRow key={checkin.name}>
+                  {dummyData.checkIns.map((checkin, index) => (
+                    <TableRow key={index}>
                       <TableCell component="th" scope="row">
                         {checkin.date}
                       </TableCell>
@@ -151,7 +154,18 @@ function Profile(props) {
             <Paper className={`${classes.paper} ${classes.center}`}>
               <form onSubmit={handleSubmit}>
                 <TextField
-                  id="outlined-full-width"
+                  id="test"
+                  label="Test DB Input"
+                  style={{ margin: 8 }}
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                />
+                <TextField
+                  id="test2"
                   label="Test DB Input"
                   style={{ margin: 8 }}
                   fullWidth
