@@ -5,8 +5,8 @@ const UserData = require("../../models/UserData");
 
 router.post("/testing", (req, res) => {
   var data = new UserData({
-    checkIns: ["TEST", "TEST2"],
-    translations: ["TRANSLATION", "TRANSLATION2"]
+    checkIns: req.body.checkIns,
+    translations: req.body.translations
   });
 
   data

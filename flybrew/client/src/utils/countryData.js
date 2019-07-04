@@ -128,7 +128,7 @@ const countryData = [
       "Let's take it back. Like way back. Try over 1000 years back. Brewing has been a part of Czech history since the year 993, when beer was almost exclusively produced at monasteries. Bohemian brewing practices became world renowned by the mid-19th century when the citizens and brewers of Plzen created the now hugely popular style known as the Pilsner. Today, citizens of the Czech Republic proudly hold the title of highest annual beer consumption per capita at 142.4 liters. To that, we say Na Zdravi!",
     phrasebook: [
       {
-        english: "I will have a dubbel, please.",
+        english: "I will have a pilsner, please.",
         translated: "Budu mít pilsner, prosím."
       },
       {

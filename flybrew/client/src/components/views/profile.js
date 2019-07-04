@@ -1,5 +1,5 @@
 import React from "react";
-// import axios from "axios";
+import axios from "axios";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,6 +10,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -82,6 +84,23 @@ function Profile(props) {
   const classes = useStyles();
   const user = props.auth.user.name.split(" ", 1);
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("WORKS");
+
+    axios
+      .post("/api/userdata/testing", {
+        checkIns: ["Wow!", "Wowowowow!"],
+        translations: ["Checkin1", "Checkin2"]
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <Container>
@@ -126,6 +145,26 @@ function Profile(props) {
                   ))}
                 </TableBody>
               </Table>
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={`${classes.paper} ${classes.center}`}>
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  id="outlined-full-width"
+                  label="Test DB Input"
+                  style={{ margin: 8 }}
+                  fullWidth
+                  margin="normal"
+                  variant="outlined"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                />
+                <Button variant="outlined" onClick={handleSubmit}>
+                  <Typography variant="button">Test</Typography>
+                </Button>
+              </form>
             </Paper>
           </Grid>
         </Grid>
