@@ -25,10 +25,16 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    backgroundColor: "#f4f4f4",
+    "& img": {
+      height: "3rem",
+      float: "left"
+    }
   },
   toolbar: {
-    paddingRight: 24 // keep right padding when drawer closed
+    paddingRight: 24, // keep right padding when drawer closed
+    backgroundColor: "#0c084c"
   },
   toolbarIcon: {
     display: "flex",
@@ -144,7 +150,7 @@ function Dashwrap(props) {
             noWrap
             className={classes.title}
           >
-            Flybrew
+            <img src="logo.png" alt="logo" />
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

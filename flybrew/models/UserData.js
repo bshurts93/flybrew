@@ -3,13 +3,14 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const UserDataSchema = new Schema({
+  savedBeerIDs: {
+    type: Array
+  },
   checkIns: {
-    type: Array,
-    required: true
+    type: Array
   },
   translations: {
-    type: Array,
-    required: true
+    type: Array
   }
 });
 

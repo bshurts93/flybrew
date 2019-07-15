@@ -150,7 +150,7 @@ function Profile(props) {
               </Table>
             </Paper>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Paper className={`${classes.paper} ${classes.center}`}>
               <form onSubmit={handleSubmit}>
                 <TextField
@@ -180,7 +180,7 @@ function Profile(props) {
                 </Button>
               </form>
             </Paper>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </div>

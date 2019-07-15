@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 
@@ -11,6 +12,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
 import { Divider } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import AddBox from "@material-ui/icons/AddBox";
@@ -66,6 +69,24 @@ class Home extends React.Component {
       });
   };
 
+  saveBeer = e => {
+    const beer = e.currentTarget.id;
+
+    console.log(e.currentTarget);
+    console.log(beer);
+
+    axios
+      .post("/api/userdata/testing", {
+        checkIns: [beer, beer]
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -75,7 +96,7 @@ class Home extends React.Component {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper className={`${classes.paper} search`}>
-                <Typography variant="h2">Where to?</Typography>
+                <Typography variant="h2">Search via Untappd</Typography>
               </Paper>
             </Grid>
           </Grid>
@@ -110,16 +131,24 @@ class Home extends React.Component {
                   </Typography>
                 ) : (
                   <List>
-                    {this.state.beers.map((item, index) => (
-                      <div key={index}>
-                        <ListItem button>
-                          <ListItemIcon>
-                            <AddBox />
-                          </ListItemIcon>
+                    {this.state.beers.map(item => (
+                      <div key={item.beer.bid}>
+                        <ListItem
+                          id={item.beer.bid}
+                          button
+                          onClick={this.saveBeer}
+                        >
+                          <ListItemIcon id={item.beer.bid} />
                           <ListItemText
                             primary={item.beer.beer_name}
                             secondary={item.brewery.brewery_name}
+                            id={item.beer.bid}
                           />
+                          <ListItemSecondaryAction>
+                            <IconButton edge="end" aria-label="Comments">
+                              <AddBox />
+                            </IconButton>
+                          </ListItemSecondaryAction>
                         </ListItem>
                         <Divider />
                       </div>

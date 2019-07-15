@@ -3,9 +3,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
-import BarChartIcon from "@material-ui/icons/BarChart";
+import CardTravel from "@material-ui/icons/CardTravel";
+import PersonOutlineSharp from "@material-ui/icons/PersonOutlineSharp";
 import LayersIcon from "@material-ui/icons/Layers";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import { Link } from "react-router-dom";
@@ -22,7 +21,7 @@ export const mainListItems = (
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <PersonOutlineSharp />
       </ListItemIcon>
       <Link to="/profile" style={{ textDecoration: "none", color: "black" }}>
         <ListItemText primary="My Profile" />
@@ -30,15 +29,11 @@ export const mainListItems = (
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <CardTravel />
       </ListItemIcon>
-      <ListItemText primary="My Friends" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Stats" />
+      <Link to="/trips" style={{ textDecoration: "none", color: "black" }}>
+        <ListItemText primary="My Trips" />
+      </Link>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
