@@ -1,2 +1,2 @@
-![](flybrew/client/public/logo)
+![](flybrew/client/public/logo.png)
 # final-project
