@@ -1,2 +1,2 @@
-![](flybrew/client/public/flags/austrian-flag-medium.jpg)
+![](flybrew/client/public/logo)
 # final-project
