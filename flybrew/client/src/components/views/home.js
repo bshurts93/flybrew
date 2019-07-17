@@ -78,19 +78,17 @@ class Home extends React.Component {
       beerName: beerName
     };
 
-    console.log(beerObj);
-
-    // axios
-    //   .post("/api/userdata/testing", {
-    //     userID: "Ben",
-    //     checkIns: [beer, obj]
-    //   })
-    //   .then(function(response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
+    axios
+      .post("/api/userdata/testing", {
+        userID: "Ben",
+        checkIns: beerObj
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   render() {
