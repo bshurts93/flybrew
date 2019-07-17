@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const UserDataSchema = new Schema({
+  userID: {
+    type: String
+  },
   savedBeerIDs: {
     type: Array
   },

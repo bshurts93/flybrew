@@ -1,10 +1,14 @@
 const express = require("express");
+// DB Config
+const db = require("../../config/keys").mongoURI;
+
 const router = express.Router();
 
 const UserData = require("../../models/UserData");
 
 router.post("/testing", (req, res) => {
-  var data = new UserData({
+  const data = new UserData({
+    userID: req.body.userID,
     checkIns: req.body.checkIns,
     translations: req.body.translations,
     savedBeerIDs: req.body.savedBeerIDs

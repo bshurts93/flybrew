@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,8 +10,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+// import TextField from "@material-ui/core/TextField";
+// import Button from "@material-ui/core/Button";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -86,23 +86,23 @@ function Profile(props) {
   const userID = props.auth.user.id;
   console.log(userID);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const testInput = document.getElementById("test").value;
-    const testInput2 = document.getElementById("test2").value;
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const testInput = document.getElementById("test").value;
+  //   const testInput2 = document.getElementById("test2").value;
 
-    axios
-      .post("/api/userdata/testing", {
-        checkIns: [testInput],
-        translations: [testInput2]
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  };
+  //   axios
+  //     .post("/api/userdata/testing", {
+  //       checkIns: [testInput],
+  //       translations: [testInput2]
+  //     })
+  //     .then(function(response) {
+  //       console.log(response);
+  //     })
+  //     .catch(function(error) {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <div>

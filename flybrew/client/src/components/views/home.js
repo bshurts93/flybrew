@@ -70,21 +70,27 @@ class Home extends React.Component {
   };
 
   saveBeer = e => {
-    const beer = e.currentTarget.id;
+    const beerID = e.currentTarget.id;
+    const beerName = e.currentTarget.getAttribute("name");
 
-    console.log(e.currentTarget);
-    console.log(beer);
+    const beerObj = {
+      beerID: beerID,
+      beerName: beerName
+    };
 
-    axios
-      .post("/api/userdata/testing", {
-        checkIns: [beer, beer]
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    console.log(beerObj);
+
+    // axios
+    //   .post("/api/userdata/testing", {
+    //     userID: "Ben",
+    //     checkIns: [beer, obj]
+    //   })
+    //   .then(function(response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   };
 
   render() {
@@ -135,6 +141,7 @@ class Home extends React.Component {
                       <div key={item.beer.bid}>
                         <ListItem
                           id={item.beer.bid}
+                          name={item.beer.beer_name}
                           button
                           onClick={this.saveBeer}
                         >
