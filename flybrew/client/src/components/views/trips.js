@@ -29,6 +29,8 @@ function Trips(props) {
   const classes = useStyles();
   const user = props.auth.user.name.split(" ", 1);
 
+  console.log(user);
+
   return (
     <div>
       <Container>

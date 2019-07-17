@@ -179,7 +179,7 @@ function Dashwrap(props) {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
-      <main className={classes.content}>
+      <main className={classes.content} data-user={props.auth.user.name}>
         <div className={classes.appBarSpacer} />
         {props.children}
       </main>

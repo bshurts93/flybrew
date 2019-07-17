@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
@@ -78,6 +79,7 @@ class Home extends React.Component {
       beerName: beerName
     };
 
+    // userID is hardcoded for testing
     axios
       .post("/api/userdata/testing", {
         userID: "5d2f9f52e5b67b3751b443f6",
@@ -92,22 +94,22 @@ class Home extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
-
     return (
       <div>
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper className={`${classes.paper} search`}>
-                <Typography variant="h2">Search via Untappd</Typography>
+              <Paper className={"search"}>
+                <Typography variant="h2">
+                  Hey {this.props.auth.user.name}! Search via Untappd
+                </Typography>
               </Paper>
             </Grid>
           </Grid>
 
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper className={`${classes.paper} ${classes.center}`}>
+              <Paper>
                 <form onSubmit={this.handleSubmit}>
                   <TextField
                     id="outlined-full-width"
@@ -128,11 +130,9 @@ class Home extends React.Component {
               </Paper>
             </Grid>
             <Grid item xs={12}>
-              <Paper className={classes.paper}>
+              <Paper>
                 {this.state.beers.length < 1 ? (
-                  <Typography variant="h4" className={classes.center}>
-                    Search Above!
-                  </Typography>
+                  <Typography variant="h4">Search Above!</Typography>
                 ) : (
                   <List>
                     {this.state.beers.map(item => (
@@ -170,6 +170,15 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  classes: PropTypes.object.isRequired
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
-export default withStyles(styles)(Home);
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(Home);
