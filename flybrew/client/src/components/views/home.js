@@ -80,7 +80,7 @@ class Home extends React.Component {
 
     axios
       .post("/api/userdata/testing", {
-        userID: "Ben",
+        userID: "5d2f9f52e5b67b3751b443f6",
         checkIns: beerObj
       })
       .then(function(response) {
