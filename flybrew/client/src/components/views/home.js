@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
+import SearchBar from "../layout/SearchBar";
+import ViewHeader from "../layout/ViewHeader";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -23,25 +23,27 @@ import "./styles.css";
 import "../../utils/untappedAPI";
 import untappedAPI from "../../utils/untappedAPI";
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: "30px",
-    marginTop: "30px",
-    color: "black"
-  },
-  center: {
-    textAlign: "center"
-  }
-});
+// const styles = theme => ({
+//   root: {
+//     flexGrow: 1
+//   },
+//   paper: {
+//     padding: "30px",
+//     marginTop: "30px",
+//     color: "black"
+//   },
+//   center: {
+//     textAlign: "center"
+//   }
+// });
 
 class Home extends React.Component {
   state = {
     value: "",
     beers: []
   };
+
+  userFirstName = this.props.auth.user.name.split(" ", 1);
 
   handleChange = event => {
     this.setState({ value: event.target.value });
@@ -99,40 +101,27 @@ class Home extends React.Component {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper className={"search"}>
-                <Typography variant="h2">
-                  Hey {this.props.auth.user.name}! Search via Untappd
-                </Typography>
-              </Paper>
+              <ViewHeader
+                main={`Hey, ${this.userFirstName}! Let's check in some brews.`}
+                secondary="Search for your favorites and check them in"
+              />
             </Grid>
           </Grid>
 
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Paper>
-                <form onSubmit={this.handleSubmit}>
-                  <TextField
-                    id="outlined-full-width"
-                    label="Search Beers via Untappd"
-                    style={{ margin: 8 }}
-                    fullWidth
-                    margin="normal"
-                    variant="outlined"
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                    onChange={this.handleChange}
-                  />
-                  <Button variant="outlined" onClick={this.handleSubmit}>
-                    <Typography variant="button">Search</Typography>
-                  </Button>
-                </form>
-              </Paper>
+              <SearchBar label="Search via Untappd" />
             </Grid>
+
             <Grid item xs={12}>
               <Paper>
                 {this.state.beers.length < 1 ? (
-                  <Typography variant="h4">Search Above!</Typography>
+                  <Typography
+                    variant="h4"
+                    style={{ textAlign: "center", padding: "2rem" }}
+                  >
+                    Search Above!
+                  </Typography>
                 ) : (
                   <List>
                     {this.state.beers.map(item => (
