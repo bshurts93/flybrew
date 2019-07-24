@@ -23,20 +23,6 @@ import "./styles.css";
 import "../../utils/untappedAPI";
 import untappedAPI from "../../utils/untappedAPI";
 
-// const styles = theme => ({
-//   root: {
-//     flexGrow: 1
-//   },
-//   paper: {
-//     padding: "30px",
-//     marginTop: "30px",
-//     color: "black"
-//   },
-//   center: {
-//     textAlign: "center"
-//   }
-// });
-
 class Home extends React.Component {
   state = {
     value: "",
@@ -75,16 +61,18 @@ class Home extends React.Component {
   saveBeer = e => {
     const beerID = e.currentTarget.id;
     const beerName = e.currentTarget.getAttribute("name");
+    const date = new Date();
 
     const beerObj = {
+      timestamp: date,
       beerID: beerID,
       beerName: beerName
     };
 
-    // userID is hardcoded for testing
     axios
-      .post("/api/userdata/testing", {
-        userID: "5d2f9f52e5b67b3751b443f6",
+      .post("/api/userdata/save", {
+        userID: this.props.auth.user.id,
+        userName: this.props.auth.user.name,
         checkIns: beerObj
       })
       .then(function(response) {
@@ -110,7 +98,11 @@ class Home extends React.Component {
 
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <SearchBar label="Search via Untappd" />
+              <SearchBar
+                label="Search via Untappd"
+                handleSubmit={this.handleSubmit}
+                handleChange={this.handleChange}
+              />
             </Grid>
 
             <Grid item xs={12}>

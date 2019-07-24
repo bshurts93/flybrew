@@ -30,7 +30,7 @@ export default function SearchBar(props) {
 
   return (
     <Paper>
-      <form className={classes.container}>
+      <form className={classes.container} onSubmit={props.handleSubmit}>
         <TextField
           id="outlined-full-width"
           label={props.label}
@@ -41,11 +41,13 @@ export default function SearchBar(props) {
           InputLabelProps={{
             shrink: true
           }}
+          onChange={props.handleChange}
         />
         <Button
           className={classes.button}
           style={{ marginLeft: 18, marginRight: 18, marginBottom: 18 }}
           variant="outlined"
+          onClick={props.handleSubmit}
         >
           <Typography variant="button">Search</Typography>
         </Button>

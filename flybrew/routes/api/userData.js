@@ -6,32 +6,49 @@ const router = express.Router();
 
 const UserData = require("../../models/UserData");
 
-router.post("/testing", (req, res) => {
-  console.log(req.body.checkIns);
+router.post("/save", (req, res) => {
   UserData.findByIdAndUpdate(
     req.body.userID,
-    { $push: { checkIns: req.body.checkIns } },
+    {
+      userName: req.body.userName,
+      userID: req.body.userID,
+      $push: { checkIns: req.body.checkIns }
+    },
     { safe: true, upsert: true },
     function(err, doc) {
       if (err) {
         console.log(err);
       } else {
-        //do stuff
         console.log("Success!");
       }
     }
   );
-  //   const data = new UserData({
-  //     userID: req.body.userID,
-  //     checkIns: req.body.checkIns,
-  //     translations: req.body.translations,
-  //     savedBeerIDs: req.body.savedBeerIDs
-  //   });
+});
 
-  //   data
-  //     .save()
-  //     .then(data => res.json(data))
-  //     .catch(err => console.log(err));
+// router.get("/checkins/:id", (req, res) => {
+//   const userID = req.params.id;
+
+//   UserData.findById(req.body.userID)
+//     .then(doc => {
+//       console.log(doc);
+//       res.send(req.body);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// });
+
+router.get("/checkins/:id", function(req, res) {
+  var id = req.params.id;
+  UserData.findById(id).then((err, results) => {
+    if (err) return console.error(err);
+    try {
+      console.log(results);
+    } catch (error) {
+      console.log("errror getting results");
+      console.log(error);
+    }
+  });
 });
 
 module.exports = router;

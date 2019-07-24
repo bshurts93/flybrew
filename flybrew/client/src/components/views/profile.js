@@ -1,5 +1,6 @@
 import React from "react";
-// import axios from "axios";
+import axios from "axios";
+
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
@@ -80,29 +81,23 @@ const dummyData = {
   ]
 };
 
+const getCheckins = id => {
+  axios
+    .get("/api/userdata/checkins/" + id)
+    .then(function(response) {
+      console.log("ASDFASDF");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+};
+
 function Profile(props) {
   const classes = useStyles();
   const user = props.auth.user.name.split(" ", 1);
   const userID = props.auth.user.id;
-  console.log(userID);
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const testInput = document.getElementById("test").value;
-  //   const testInput2 = document.getElementById("test2").value;
-
-  //   axios
-  //     .post("/api/userdata/testing", {
-  //       checkIns: [testInput],
-  //       translations: [testInput2]
-  //     })
-  //     .then(function(response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function(error) {
-  //       console.log(error);
-  //     });
-  // };
+  getCheckins(userID);
 
   return (
     <div>
