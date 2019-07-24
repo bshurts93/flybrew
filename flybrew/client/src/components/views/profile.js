@@ -85,7 +85,8 @@ const getCheckins = id => {
   axios
     .get("/api/userdata/checkins/" + id)
     .then(function(response) {
-      console.log("ASDFASDF");
+      const checkins = response.data.checkIns;
+      console.log(checkins);
     })
     .catch(function(error) {
       console.log(error);

@@ -40,14 +40,8 @@ router.post("/save", (req, res) => {
 
 router.get("/checkins/:id", function(req, res) {
   var id = req.params.id;
-  UserData.findById(id).then((err, results) => {
-    if (err) return console.error(err);
-    try {
-      console.log(results);
-    } catch (error) {
-      console.log("errror getting results");
-      console.log(error);
-    }
+  UserData.findById(id).then(results => {
+    res.json(results);
   });
 });
 
